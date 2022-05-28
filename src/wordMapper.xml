@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.scit.word.dao.WordMapper">
+	<select id="listWord" resultType="Word">
+		select *from japanword
+		order by
+		seq
+	</select>
+	<select id="totalWords" resultType="integer">
+		select count(*)
+		from japanword
+	</select>
+
+	<insert id="appendWord" parameterType="Word">
+		INSERT INTO japanword
+		(seq, word, mean)
+		VALUES
+		(japanword_seq.nextval,#{word}, #{mean})
+	</insert>
+
+	<select id="findByWord" parameterType="string" resultType="Word">
+		select*from japanword
+		where word=#{word}
+	</select>
+
+	<delete id="deleteWord" parameterType="integer">
+		delete from japanword
+		where seq = #{seq}
+	</delete>
+	<update id="updateWord" parameterType="Word">
+		update japanword
+		set word=
+		#{word}, mean=#{mean}, memorize = #{memorize}
+		where seq=#{seq}
+
+	</update>
+	<select id="unmemorizedWords" resultType="Word">
+		select * from japanword
+		where memorize = 0
+		order by seq
+	</select>
+</mapper>
