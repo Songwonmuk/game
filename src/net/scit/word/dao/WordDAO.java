@@ -10,7 +10,7 @@ import net.scit.word.vo.Word;
 public class WordDAO {
 	private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
 
-	// ´Ü¾î Ãß°¡
+	// ë‹¨ì–´ ì¶”ê°€
 	public int appendWord(Word word) {
 		SqlSession session = factory.openSession();
 
@@ -23,7 +23,7 @@ public class WordDAO {
 		return result;
 	}
 
-	// ´Ü¾î ¸ñ·Ï
+	// ë‹¨ì–´ ëª©ë¡
 	public List<Word> listWord() {
 		SqlSession session = factory.openSession();
 
@@ -34,7 +34,7 @@ public class WordDAO {
 		return list;
 	}
 
-	// ´Ü¾î Ã£±â
+	// ë‹¨ì–´ ì°¾ê¸°
 	public Word findByWord(String word) {
 		SqlSession session = factory.openSession();
 
@@ -45,7 +45,7 @@ public class WordDAO {
 		return w;
 	}
 
-	// ´Ü¾î »èÁ¦
+	// ë‹¨ì–´ ì‚­ì œ
 	public int deleteWord(int seq) {
 		SqlSession session = factory.openSession();
 
@@ -58,7 +58,7 @@ public class WordDAO {
 		return result;
 	}
 
-	// ´Ü¾î ¼öÁ¤
+	// ë‹¨ì–´ ìˆ˜ì •
 	public int updateWord(Word word) {
 		SqlSession session = factory.openSession();
 
@@ -71,7 +71,7 @@ public class WordDAO {
 		return result;
 	}
 
-	// ÃÑ ´Ü¾î¼ö
+	// ì´ ë‹¨ì–´ìˆ˜
 	public int totalWords() {
 		SqlSession session = factory.openSession();
 
@@ -81,6 +81,7 @@ public class WordDAO {
 
 		return result;
 	}
+	// ì•ˆì™¸ìš´ ë‹¨ì–´ 
 	public List<Word> unmemorizedWords(){
 		SqlSession session = factory.openSession();
 
