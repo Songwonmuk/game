@@ -25,106 +25,106 @@ public class GuessingGameUI{
 			case "5" : delete(); 	break;
 			case "6" : guessingGame(); break;
 			case "0" : 
-				System.out.println("** ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.");
+				System.out.println("** í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.");
 				System.exit(0);
 			default :
-				System.out.println("err) ¸Ş´º¸¦ ´Ù½Ã ¼±ÅÃÇØ ÁÖ¼¼¿ä");
+				System.out.println("err) ë©”ë‰´ë¥¼ ë‹¤ì‹œ ì„ íƒí•´ ì£¼ì„¸ìš”");
 			}
-			//scanner.nextLine(); // ¹öÆÛ ºñ¿ì±â
+			//scanner.nextLine(); // ë²„í¼ ë¹„ìš°ê¸°
 		}
 	}
 	
-	// ¸ŞÀÎ ¸Ş´º
+	// ë©”ì¸ ë©”ë‰´
 	private void mainMenu() {
-		System.out.println("===== [ÀÏº»¾î ´Ü¾î ¿Ü¿ì±â] =====");
-		System.out.println("       1) ÀüÃ¼ ¸ñ·Ï Á¶È¸");
-		System.out.println("       2) ´Ü¾î Ãß°¡");
-		System.out.println("       3) ´Ü¾î Ã£±â");
-		System.out.println("       4) ´Ü¾î ¼öÁ¤");
-		System.out.println("       5) ´Ü¾î »èÁ¦");
-		System.out.println("       6) ´Ü¾î ¸ÂÃß±â °ÔÀÓ");
-		System.out.println("       0) ÇÁ·Î±×·¥ Á¾·á");
+		System.out.println("===== [ì¼ë³¸ì–´ ë‹¨ì–´ ì™¸ìš°ê¸°] =====");
+		System.out.println("       1) ì „ì²´ ëª©ë¡ ì¡°íšŒ");
+		System.out.println("       2) ë‹¨ì–´ ì¶”ê°€");
+		System.out.println("       3) ë‹¨ì–´ ì°¾ê¸°");
+		System.out.println("       4) ë‹¨ì–´ ìˆ˜ì •");
+		System.out.println("       5) ë‹¨ì–´ ì‚­ì œ");
+		System.out.println("       6) ë‹¨ì–´ ë§ì¶”ê¸° ê²Œì„");
+		System.out.println("       0) í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 		System.out.println("============================");
-		System.out.print  ("          ¼±ÅÃ> ");
+		System.out.print  ("          ì„ íƒ> ");
 	}
 	
 
-	// ÀüÃ¼ ´Ü¾î Á¶È¸
+	// ì „ì²´ ë‹¨ì–´ ì¡°íšŒ
 	private void list() {
-		System.out.println("\n<< ÀüÃ¼ ´Ü¾î Á¶È¸ >>");
+		System.out.println("\n<< ì „ì²´ ë‹¨ì–´ ì¡°íšŒ >>");
 		
 		List<Word> listAll = dao.listWord();
 		listAll.forEach(i->System.out.println(i));
 		
 		int total = dao.totalWords();
-		System.out.println("ÇöÀç µî·ÏµÈ ´Ü¾î´Â ÃÑ " + total + " °³ÀÔ´Ï´Ù.");
+		System.out.println("í˜„ì¬ ë“±ë¡ëœ ë‹¨ì–´ëŠ” ì´ " + total + " ê°œì…ë‹ˆë‹¤.");
 		
 	}
 
-	// »õ·Î¿î ´Ü¾î Ãß°¡
+	// ìƒˆë¡œìš´ ë‹¨ì–´ ì¶”ê°€
 	private void add() {
-		System.out.println("\n<< »õ·Î¿î ´Ü¾î µî·Ï >>");
+		System.out.println("\n<< ìƒˆë¡œìš´ ë‹¨ì–´ ë“±ë¡ >>");
 		
-		System.out.print("> ´Ü¾î : ");
+		System.out.print("> ë‹¨ì–´ : ");
 		String word = scanner.nextLine();
 		if(word.trim().equals("")) {
-			System.out.println("err) ´Ü¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+			System.out.println("err) ë‹¨ì–´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 			return;
 		}
 		
-		System.out.print("> ¶æ : ");
+		System.out.print("> ëœ» : ");
 		String mean = scanner.nextLine();
 
-		if(mean.trim().equals("")) {//trim ÁÂ¿ìÀÇ ¹®ÀÚ¿­ °ø¹é Á¦°Å
-			System.out.println("err) ´Ü¾îÀÇ ¶æÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä");
+		if(mean.trim().equals("")) {//trim ì¢Œìš°ì˜ ë¬¸ìì—´ ê³µë°± ì œê±°
+			System.out.println("err) ë‹¨ì–´ì˜ ëœ»ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
 			return;
 		}
 		
 		Word addword = new Word(word, mean);
 		dao.appendWord(addword);		
 		
-		System.out.println("** »õ·Î¿î ´Ü¾î°¡ µî·ÏµÇ¾ú½À´Ï´Ù.\n");
+		System.out.println("** ìƒˆë¡œìš´ ë‹¨ì–´ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 	}
 
-	// ´Ü¾î Ã£±â
+	// ë‹¨ì–´ ì°¾ê¸°
 	private void search() {
 		String word;
-		System.out.println("\n<< ´Ü¾î Ã£±â >>");
+		System.out.println("\n<< ë‹¨ì–´ ì°¾ê¸° >>");
 		
-		System.out.print("> ´Ü¾î : ");
+		System.out.print("> ë‹¨ì–´ : ");
 		word = scanner.nextLine();
 		if(word.trim().equals("")) {
-			System.out.println("err) ´Ü¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+			System.out.println("err) ë‹¨ì–´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 			return;
 		}		
 	
 		Word findWord = dao.findByWord(word);
 		if(findWord == null) {
-			System.out.println("** ´Ü¾î°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("** ë‹¨ì–´ê°€ ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		}
 		
 		System.out.println(findWord);
 	}
 	
-	// ´Ü¾î ¼öÁ¤
+	// ë‹¨ì–´ ìˆ˜ì •
 	private void update() {
-		System.out.println("\n<< ´Ü¾î ¼öÁ¤ >>");
-		System.out.println("> ¼öÁ¤ÇÒ ´Ü¾î");
+		System.out.println("\n<< ë‹¨ì–´ ìˆ˜ì • >>");
+		System.out.println("> ìˆ˜ì •í•  ë‹¨ì–´");
 		String word = scanner.nextLine();
 		
 		Word findedWord = dao.findByWord(word);
 		
 		if (findedWord == null) {
-			System.out.println("Ã£À¸½Ã´Â ´Ü¾î¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("ì°¾ìœ¼ì‹œëŠ” ë‹¨ì–´ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		}
-		System.out.print("* °Ë»öµÈ ´Ü¾î : ");
+		System.out.print("* ê²€ìƒ‰ëœ ë‹¨ì–´ : ");
 		System.out.println(findedWord);
 		
-		System.out.print("> ´Ü¾î : ");
+		System.out.print("> ë‹¨ì–´ : ");
 		String newWord = scanner.nextLine();
-		System.out.print("> ¶æ : ");
+		System.out.print("> ëœ» : ");
 		String mean = scanner.nextLine();
 		
 		findedWord.setWord(newWord);
@@ -132,55 +132,34 @@ public class GuessingGameUI{
 		
 		dao.updateWord(findedWord);
 		
-		System.out.println("** ´Ü¾î°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù. ");
-		
-//		List<Word> listAll = dao.listWord(); //ÀüÃ¼ ¸®½ºÆ®¸¦ ¿ì¼± °¡Á®¿Â´Ù.
-//		for(Word findingWord : listAll) { // ¶æ¿¡ Ã£´Â ´Ü¾î°¡ ÀÖ´ÂÁö È®ÀÎÇÑ´Ù.
-//			if(findingWord.getMean().equals(insertedword)) {
-//				System.out.println(findingWord);
-//				
-//				System.out.print("> ´Ü¾î : ");
-//				word = scanner.nextLine();
-//				System.out.println("> ¶æ : ");
-//				mean = scanner.nextLine();
-//				
-//				Word updatedWord = new Word(word,mean);
-//				
-//				dao.updateWord(updatedWord);
-//				System.out.println("** ´Ü¾î°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
-//				
-//			}
-//		}
-		
-	
-	
+		System.out.println("** ë‹¨ì–´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤. ");
 	}
 	
-	// ´Ü¾î »èÁ¦
+	// ë‹¨ì–´ ì‚­ì œ
 	private void delete() {
-		System.out.println("\n<< ´Ü¾î »èÁ¦ >>");
-		System.out.println("> »èÁ¦ÇÒ ´Ü¾î");
+		System.out.println("\n<< ë‹¨ì–´ ì‚­ì œ >>");
+		System.out.println("> ì‚­ì œí•  ë‹¨ì–´");
 		String word = scanner.nextLine();
 		
 		Word findedword = dao.findByWord(word);
 		if(findedword == null) {
-			System.out.println("ÀÔ·ÂÇÏ½Å ´Ü¾î¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("ì…ë ¥í•˜ì‹  ë‹¨ì–´ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		}		
 		System.out.println(findedword);
 		
-		System.out.println("** ´Ü¾î¸¦ »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (y/n) ");
+		System.out.println("** ë‹¨ì–´ë¥¼ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n) ");
 		String answer = scanner.nextLine();
 
 		if (answer.trim().equals("y")) {
 			int result = dao.deleteWord(findedword.getSeq());
-			System.out.println(result +"°³ ´Ü¾î°¡ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+			System.out.println(result +"ê°œ ë‹¨ì–´ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 			return;
 		}
-		System.out.println("** »èÁ¦ ÀÛ¾÷ÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù.");
+		System.out.println("** ì‚­ì œ ì‘ì—…ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 				
 	}
-	// ´Ü¾î ¸ÂÃß±â °ÔÀÓ
+	// ë‹¨ì–´ ë§ì¶”ê¸° ê²Œì„
 	private void guessingGame() {
 		GuessingGame game = new GuessingGame();	
 		game.startGame();
