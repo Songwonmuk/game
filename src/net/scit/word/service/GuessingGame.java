@@ -8,60 +8,48 @@ import java.util.stream.Collectors;
 import net.scit.word.dao.WordDAO;
 import net.scit.word.vo.Word;
 
-// ´Ü¾î ¸ÂÃß±â °ÔÀÓ
+// ë‹¨ì–´ ë§ì¶”ê¸° ê²Œì„
 public class GuessingGame {
-	int todayScore;	// ¿À´Ã ¸ÂÃá °³¼ö
+	int todayScore;	// ì˜¤ëŠ˜ ë§ì¶˜ ê°œìˆ˜
 	Scanner scanner = new Scanner(System.in);		
 
 	WordDAO dao = new WordDAO();
 
-	// ´Ü¾î ¸ÂÃß±â °ÔÀÓ
-	// 5¹ø¿¡ °ÅÃÄ °ÔÀÓÀ» ½Ç½ÃÇÏ¿© ¸ÂÀº °æ¿ì DBÀÇ memorizeÄÃ·³À» 1·Î Àû¿ë
+	// ë‹¨ì–´ ë§ì¶”ê¸° ê²Œì„
+	// 5ë²ˆì— ê±°ì³ ê²Œì„ì„ ì‹¤ì‹œí•˜ì—¬ ë§ì€ ê²½ìš° DBì˜ memorizeì»¬ëŸ¼ì„ 1ë¡œ ì ìš©
 	public void startGame() {
 		String word;
 		int rightMean =0;
 		// Code Here
 		
-		System.out.println("\n<< ´Ü¾î ¸ÂÃß±â °ÔÀÓ >>");
+		System.out.println("\n<< ë‹¨ì–´ ë§ì¶”ê¸° ê²Œì„ >>");
 		int cnt=1;
 		List<Word> gameList = choiceWord();
 		for(Word w : gameList) {			
-			System.out.println(cnt+"¹ø : " + w.getMean());
-			System.out.print("* ´Ü¾î ");
+			System.out.println(cnt+"ë²ˆ : " + w.getMean());
+			System.out.print("* ë‹¨ì–´ ");
 			word = scanner.nextLine();
 			if(w.getWord().equals(word)) {
-				System.out.println("**Á¤´äÀÔ´Ï´Ù");
+				System.out.println("**ì •ë‹µì…ë‹ˆë‹¤");
 				w.setMemorize(true);
 				dao.updateWord(w);
-//				myAnswer.add(w);
 				rightMean++;
 			}else {
-				System.out.println("**¿À´äÀÔ´Ï´Ù");
-//				myAnswer.add(w);
+				System.out.println("**ì˜¤ë‹µì…ë‹ˆë‹¤");
 			}		
 			cnt++;
 		}
 		
-		System.out.println("## ¿À´Ã ¸ÂÃá °³¼ö : "+rightMean);
+		System.out.println("## ì˜¤ëŠ˜ ë§ì¶˜ ê°œìˆ˜ : "+rightMean);
 		gameList.forEach(game->System.out.println(game));
 	}
 
-	// °ÔÀÓ°á°ú¿Í Á¡¼ö Ãâ·Â
-//	private void result(List<Word> myAnswer) {
-//
-//		myAnswer.forEach(answer->System.out.println(answer));
-//	}
-
-	// ¿À´ÃÀÇ ´Ü¾î¸¦ ·£´ıÇÏ°Ô 5°³ ¼±ÅÃÇÏ¿© ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
-	// ¼±ÅÃµÈ ´Ü¾î´Â Áßº¹µÇÁö ¾Ê¾Æ¾ß ÇÏ°í, ¿Ü¿ìÁö ¾ÊÀº ´Ü¾î¿©¾ß ÇÑ´Ù.
+	// ì˜¤ëŠ˜ì˜ ë‹¨ì–´ë¥¼ ëœë¤í•˜ê²Œ 5ê°œ ì„ íƒí•˜ì—¬ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
+	// ì„ íƒëœ ë‹¨ì–´ëŠ” ì¤‘ë³µë˜ì§€ ì•Šì•„ì•¼ í•˜ê³ , ì™¸ìš°ì§€ ì•Šì€ ë‹¨ì–´ì—¬ì•¼ í•œë‹¤.
 	private List<Word> choiceWord() {
-//		List<Word> list = dao.listWord();	// DB·Î ºÎÅÍ °¡Á®¿Â µ¥ÀÌÅÍ
-//		List<Word> choiceWord = new ArrayList<Word>(); // ·£´ıÇÏ°Ô ¼±ÅÃµÈ 
-//		Set<Word> choice = new HashSet<>();	// Áßº¹ Á¦°Å¸¦ À§ÇØ »ç¿ë
-//		// Code Here		
 		List<Word> unmemorizedWords = dao.unmemorizedWords();
 		
-		Collections.shuffle(unmemorizedWords); // ¸®½ºÆ® ·£´ıÇÏ°Ô ¼¯´Â´Ù
+		Collections.shuffle(unmemorizedWords); // ë¦¬ìŠ¤íŠ¸ ëœë¤í•˜ê²Œ ì„ëŠ”ë‹¤
 		return unmemorizedWords.stream()
 				.distinct()
 				.limit(5)
