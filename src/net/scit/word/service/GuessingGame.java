@@ -25,14 +25,14 @@ public class GuessingGame {
 		System.out.println("\n<< 단어 맞추기 게임 >>");
 		int cnt=1;
 		List<Word> gameList = choiceWord();
-		for(Word w : gameList) {			
-			System.out.println(cnt+"번 : " + w.getMean());
+		for(Word gameWord : gameList) {			
+			System.out.println(cnt+"번 : " + gameWord.getMean());
 			System.out.print("* 단어 ");
 			word = scanner.nextLine();
-			if(w.getWord().equals(word)) {
+			if(gameWord.getWord().equals(word)) {
 				System.out.println("**정답입니다");
-				w.setMemorize(true);
-				dao.updateWord(w);
+				gameWord.setMemorize(true);
+				dao.updateWord(gameWord);
 				rightMean++;
 			}else {
 				System.out.println("**오답입니다");
